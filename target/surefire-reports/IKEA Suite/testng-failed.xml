@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [IKEA Suite]" guice-stage="DEVELOPMENT" verbose="0">
+  <test thread-count="5" name="IKEA Tests(failed)" verbose="0">
+    <classes>
+      <class name="tests.IkeaTest">
+        <methods>
+          <include name="testSearchAndAddToCart"/>
+        </methods>
+      </class> <!-- tests.IkeaTest -->
+    </classes>
+  </test> <!-- IKEA Tests(failed) -->
+</suite> <!-- Failed suite [IKEA Suite] -->
