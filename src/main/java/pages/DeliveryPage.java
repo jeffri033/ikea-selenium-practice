@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+
 public class DeliveryPage {
         WebDriver driver;
 
@@ -53,7 +54,7 @@ public class DeliveryPage {
         By paymentMethod    = By.xpath("//*[@id='stepreview']/div/div[2]/div[6]/div[1]/div[4]/div");
         By acceptTerms      = By.xpath("//*[@id='stepreview']/div/div[2]/div[7]/div/div/span");
         By button_continuePay = By.id("btnreview");
-
+    
 
 
         public DeliveryPage(WebDriver driver) {
@@ -235,5 +236,5 @@ public class DeliveryPage {
             driver.findElement(button_continuePay).click();
         }
 
-
+       
 }

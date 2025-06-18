@@ -59,7 +59,8 @@ public class OrderPage {
 
     public void selectDelivery()  throws InterruptedException {
         // scroll the page to make sure button 'home delivery' is visible
-        WebElement button_homeDelivery = driver.findElement(homeDelivery);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        WebElement button_homeDelivery = wait.until(ExpectedConditions.visibilityOfElementLocated(homeDelivery));
 
         ((JavascriptExecutor) driver).executeScript(
             "const rect = arguments[0].getBoundingClientRect();" +

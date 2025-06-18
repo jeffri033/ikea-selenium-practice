@@ -49,6 +49,14 @@ public class IkeaTest extends BaseTest {
         delivery.processDelivery();
 
 
+        // finish make payment
+        PaymentPage payment = new PaymentPage(driver);
+        Boolean purchaseStatus = payment.makePayment();
+
+        // check purchase status
+        Assert.assertEquals(purchaseStatus, true);
+
+
         // close browser
         tearDown();
     }
