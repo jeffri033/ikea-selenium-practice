@@ -1,1 +1,4 @@
-D:\SELENIUM\project\ikea\src\test\java\tests\IkeaTest.java
+D:\SELENIUM\project\ikea\src\test\java\runners\TestRunner.java
+D:\SELENIUM\project\ikea\src\test\java\stepDefinitions\Hooks.java
+D:\SELENIUM\project\ikea\src\test\java\stepDefinitions\ShopSteps.java
+D:\SELENIUM\project\ikea\src\test\java\utils\BaseTest.java

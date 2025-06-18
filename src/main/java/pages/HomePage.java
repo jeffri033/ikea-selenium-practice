@@ -7,9 +7,9 @@ public class HomePage {
     WebDriver driver;
 
     // locator
-    By searchBox = By.id("header_searcher_desktop_input");
-    By sortButton = By.id("sort-dropdown-btn");
-    By dropdownOption = By.xpath("//button[contains(@class, 'dropdown-item') and contains(text(), 'Produk unggulan')]");
+    By searchBox        = By.id("header_searcher_desktop_input");
+    By sortButton       = By.id("sort-dropdown-btn");
+    By dropdownOption   = By.xpath("//button[contains(@class, 'dropdown-item') and contains(text(), 'Produk unggulan')]");
 
 
     public HomePage(WebDriver driver) {

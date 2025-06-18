@@ -1,8 +1,8 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="IKEA Suite">
-    <test name="IKEA Tests">
+<suite name="IKEA Test Suite">
+    <test name="IKEA Shopping Features - Test">
         <classes>
-            <class name="tests.IkeaTest"/>
+            <class name="runners.TestRunner"/>
         </classes>
     </test>
 </suite>

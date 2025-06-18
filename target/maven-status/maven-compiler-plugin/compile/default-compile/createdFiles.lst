@@ -1,6 +1,3 @@
-base\BaseTest.class
-pages\OrderPage.class
 pages\ProductPage.class
 pages\CartPage.class
 pages\HomePage.class
-pages\SearchResultsPage.class

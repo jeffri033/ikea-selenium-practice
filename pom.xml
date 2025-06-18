@@ -6,23 +6,39 @@
     <groupId>com.ikea</groupId>
     <artifactId>selenium-ikea</artifactId>
     <version>1.0</version>
+
     <dependencies>
-    
-        <!-- Selenium -->
+        <!-- Selenium for browser automation -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>4.19.1</version>
         </dependency>
-
-        <!-- TestNG -->
+        
+        <!-- Cucumber for BDD-style test scripting -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>7.15.0</version>
+        </dependency>
+        
+        <!-- Cucumber integration with TestNG -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-testng</artifactId>
+            <version>7.15.0</version>
+        </dependency>
+        
+        <!-- TestNG test framework -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>7.9.0</version>
-            <scope>test</scope>
         </dependency>
+
     </dependencies>
+
+
     <build>
         <plugins>
 

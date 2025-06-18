@@ -1,17 +1,23 @@
 package pages;
-import java.time.Duration;
-
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import java.time.Duration;
 
 public class CartPage {
     WebDriver driver;
 
     // locator
-    By productName = By.xpath("//*[@id='cart']/div[3]/div[3]/div/div[2]/div/div/a/strong");
-    By openCart_button = By.xpath("//*[contains(text(), 'Lanjut ke keranjang belanja')]");
+    By searchZone       = By.id("search_zone_search-locality-process-order_typeahead");
+    By selectedZone     = By.xpath("//*[@id='processOrder']/div[2]/div/div/div[2]/ul/li[1]");
+    By homeDelivery     = By.xpath("//*[@id='processOrder']/div[4]/div[1]/div");
+    
+    By orderSummary     = By.xpath("//*[@id='summaryCard']/div[1]/div[4]/div[1]");
+    By checkoutButton   = By.xpath("//*[@id='cart']/div[10]/div/div[3]");
+    By guestCheckout    = By.xpath("//*[@id='login_guestCheckout']");
 
     
     public CartPage(WebDriver driver) {
@@ -19,24 +25,97 @@ public class CartPage {
     }
 
 
-    public void openCart() {
-        // wait until button is visible
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); 
-        wait.until(ExpectedConditions.visibilityOfElementLocated(openCart_button));
+    public void goToCheckout() throws InterruptedException {
+        // scroll the page to make sure element 'search zone' is visible
+        WebElement element_searchZone = driver.findElement(searchZone);
 
-        // click to open cart page
-        driver.findElement(openCart_button).click();
-    }
+        ((JavascriptExecutor) driver).executeScript(
+            "const rect = arguments[0].getBoundingClientRect();" +
+            "window.scrollBy({ top: rect.top - (window.innerHeight / 2), behavior: 'auto' });",
+            element_searchZone
+        );
+        
+        Thread.sleep(2000);
 
 
-    public String getProductName() {
-        // wait until product name is visible
+
+        // enter zone keyword
+        element_searchZone.sendKeys("cilandak barat");
+
+        // wait until element dropdown list zone is visible
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(productName));
+        WebElement listZone = wait.until(ExpectedConditions.visibilityOfElementLocated(selectedZone));
 
-        // get product name
-        String product_name = driver.findElement(productName).getText();
+        // select zone
+        listZone.click();
 
-        return product_name;
+
+        // select delivery option
+        selectDelivery();
     }
+
+
+     public void selectDelivery()  throws InterruptedException {
+        // scroll the page to make sure button 'home delivery' is visible
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        WebElement button_homeDelivery = wait.until(ExpectedConditions.visibilityOfElementLocated(homeDelivery));
+
+        ((JavascriptExecutor) driver).executeScript(
+            "const rect = arguments[0].getBoundingClientRect();" +
+            "window.scrollBy({ top: rect.top - (window.innerHeight / 2), behavior: 'auto' });",
+            button_homeDelivery
+        );
+
+        Thread.sleep(2000);
+
+
+        // click button option 'home delivery'
+        button_homeDelivery.click();
+
+        // process to payment
+        continuePayment();   
+    }
+
+
+    public void continuePayment()  throws InterruptedException {
+        // scroll the page to make sure element 'order summary' is visible
+        WebElement element_orderSummary = driver.findElement(orderSummary);
+
+        ((JavascriptExecutor) driver).executeScript(
+            "const rect = arguments[0].getBoundingClientRect();" +
+            "window.scrollBy({ top: rect.top - (window.innerHeight / 2), behavior: 'auto' });",
+            element_orderSummary
+        );
+
+        Thread.sleep(2000);
+  
+
+        // click checkout button
+        driver.findElement(checkoutButton).click();
+
+        // process guest payment
+        guestPayment();
+    }
+
+
+    public void guestPayment()  throws InterruptedException {
+        // wait until button 'guest checkout is visible
+        WebElement button_guestCheckout = new WebDriverWait(driver, Duration.ofSeconds(10))
+                  .until(ExpectedConditions.visibilityOfElementLocated(guestCheckout));
+
+
+        // scroll the page to make sure button 'guest checkout' is visible
+        ((JavascriptExecutor) driver).executeScript(
+            "const rect = arguments[0].getBoundingClientRect();" +
+            "window.scrollBy({ top: rect.top - (window.innerHeight / 2), behavior: 'auto' });",
+            button_guestCheckout
+        );
+
+        Thread.sleep(2000);
+
+
+        // click button 'guest checkout'
+        button_guestCheckout.click();
+    }
+
 }

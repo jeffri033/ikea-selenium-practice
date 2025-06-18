@@ -25,7 +25,7 @@ public class PaymentPage {
     }
 
 
-    public boolean makePayment() throws InterruptedException {
+    public void makePayment() throws InterruptedException {
         // Switch to iframe by ID
         driver.switchTo().frame("snap-midtrans");
 
@@ -62,8 +62,11 @@ public class PaymentPage {
         closeModal.click();
 
         // Switch back to main content
-        driver.switchTo().defaultContent();
+        driver.switchTo().defaultContent();  
+    }
 
+
+    public boolean getConfirmationMessage() {
         // check purchase status
         // Find the element containing the text Thank You
         WebElement thankYouElement = new WebDriverWait(driver, Duration.ofSeconds(10))
@@ -74,7 +77,7 @@ public class PaymentPage {
         Boolean purchaseStatus = thankYouElement.isDisplayed();
         System.out.println(purchaseStatus);
 
-        return purchaseStatus;      
+        return purchaseStatus;    
     }
 
 }
