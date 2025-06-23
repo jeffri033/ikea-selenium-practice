@@ -31,7 +31,7 @@ public class ShopSteps extends BaseTest {
 
 
     @And("I add the product {string} to cart")
-    public void i_add_the_product_to_cart(String product_name) {
+    public void i_add_the_product_to_cart(String product_name) throws InterruptedException {
         product = new ProductPage(driver);
         product.addToCart(product_name);
     }

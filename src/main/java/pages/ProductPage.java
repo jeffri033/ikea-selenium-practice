@@ -20,9 +20,11 @@ public class ProductPage {
         this.driver = driver;
     }
 
-    public void addToCart(String product_name) {
+
+    public void addToCart(String product_name) throws InterruptedException {
         // locator selected product
         By searchResult = By.xpath("//div[contains(@class, 'itemInfo') and @name='" + product_name + "']");
+
 
 
         // wait until element is visible then find element of 'selected item'
@@ -49,6 +51,10 @@ public class ProductPage {
         WebElement addToCart_button = children.get(4);
 
 
+
+        // wait until element 'button add to card' is clickable
+        wait.until(ExpectedConditions.elementToBeClickable(addToCart_button));
+
         // scroll the page so element 'button add to card' is exactly centered.
         ((JavascriptExecutor) driver).executeScript(
             "const rect = arguments[0].getBoundingClientRect();" +
@@ -56,13 +62,11 @@ public class ProductPage {
             addToCart_button
         );
 
-
-        // wait until element 'button add to card' is clickable
-        wait.until(ExpectedConditions.elementToBeClickable(addToCart_button));
-
+        Thread.sleep(2000);
 
         // click button add to cart
         addToCart_button.click();
+
 
 
         // wait until button open cart is visible
