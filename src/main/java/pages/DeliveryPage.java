@@ -46,7 +46,6 @@ public class DeliveryPage {
         
         // locator delivery schedule
         By datePicker       = By.id("datepicker-container_DELIVERY");
-        //By dateArrival      = By.xpath("//*[@id='datepicker-container_DELIVERY']/div/div[3]/ul[3]/li[29]");
         By dateArrival      = By.xpath("(//li[@class='' and @data-view='day'])[1]"); // next available day
         By timeDelivery     = By.xpath("//*[@id='timeslot_wrapper_DELIVERY']/div");
         By continueCheckout = By.id("button_continue_checkout");
